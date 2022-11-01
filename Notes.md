@@ -34,4 +34,51 @@ const Card = (props) => {
 - Now we previously talked about components and there reusability whenever we have multiple instances of a same component
 - And we have `useState` in those components so there would be many `useState` but if we update only one components. we would be updating state of that component and NOT every component.
 
+- In One useState approach the problem is that we copy previous state and this will cause proble if a setter function is called multiple time 
+
+**Previous Code for one state approach**
+This approach does not follow pure function principle
+```javascript
+const enteredTitleHandler = (event) => {
+    setUserInput(
+        {
+            ...userInput,
+            enteredTitle:event.target.value
+        }
+     );
+}
+```
+
+**Instead we should use this approach**
+This approach ensures prevState in unaffected and this also follow pure function principle
+```javascript
+const enteredTitleHandler = (event) => {
+    setUserInput( (prevState) => {
+        return (
+            {
+                ...prevState,
+                enteredTitle:event.target.value
+            }
+        )
+    }
+     );
+}
+```
+- Always use `onSubmit` inside form tag for button tag because after submitting in`<form>` tag page reloads 
+
+- If you want to prevent reloading of `<form>` tag after submit button is clicked then use preventDefault method on event i.e. `onSubmit`
+
+## How to send data from child to parent
+
+If looked closely we return JSX code and not HTML in React components, and every we use is component
+like `input` , `button`, etc and we can add listenrs to them like `onClick`, `onChange`, etc these listners are nothing but props 
+
+In react components closly resemble to function and props as arguments therefore to we can set prop in component as function and pass our data from child to parent using that function that is declared in parent and change the variable present in parent NOTE that variable can be any thing.
+
+In this project we send data from <`ExpensesForm>` to `<NewExpenses>` which then send to `<App>` where we update the array of object that contains our data.
+
+In this project `<NewExpense>` and `<Expense>` are siblings i.e. they are on same lvl of tree where root is `<App>` and **IN REACT WE CAN NOT SENT DATA FROM SIBLING TO SIBLING** 
+
+In order to send data to sibling we send that to parent first and that data parent sends to child components that needs this thing is called **Lifting the State Up** 
+
 
