@@ -1,14 +1,13 @@
 import "./App.css";
-import "./Expenses.css"
-import ExpenseItem from "./components/Expenses/ExpenseItem";
-import Card from "./components/UI/Card"
+import NewExpense from "./components/NewExpense/NewExpense";
+import Expense from "./components/Expenses/Expense";
 
 function App() {
   const expenses = [
     {
       id: 'e1',
-      title: 'Toilet Paper',
-      amount: 94.12,
+      title: 'Note Book',
+      amount: 4.12,
       date: new Date(2020, 7, 14),
     },
     { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
@@ -33,16 +32,10 @@ function App() {
   ];
 
   return (
-    <Card className="expenses">
-      {
-        expenses.map(
-          (ele) => {
-            return <ExpenseItem expense={ele} />
-            // here ele is individual element in array of object named expenses and that object is passes ad prop in <ExpenseIten />
-          }
-        )
-      }
-    </Card>
+    <div>
+      <NewExpense />
+      <Expense expenses={expenses} />
+    </div>
   );
 
 }
