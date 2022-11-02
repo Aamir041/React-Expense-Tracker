@@ -3,11 +3,11 @@ import PurchaseDate from "./PurchaseDate";
 import Card from "../UI/Card";
 
 const ExpenseItem = (props) => {
-  const date = props.expense.date;
+  const date = props.date;
 
-  const title = props.expense.title;
+  const title = props.title;
 
-  const amount = props.expense.amount;
+  const amount = props.amount;
 
   return (
     <Card className="expense-item">
