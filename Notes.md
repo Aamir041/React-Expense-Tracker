@@ -9,7 +9,6 @@ const Card = (props) => {
     const classes = "card " + props.className; // space after a class name is important 
     return <div className={classes}>{props.children}</div>
 }
-
 ```
 - Breaking code into smaller components is called **COMPOSITION**
 
@@ -70,15 +69,19 @@ const enteredTitleHandler = (event) => {
 
 ## How to send data from child to parent
 
-If looked closely we return JSX code and not HTML in React components, and every we use is component
-like `input` , `button`, etc and we can add listenrs to them like `onClick`, `onChange`, etc these listners are nothing but props 
+If look closely we return JSX code and not HTML in React components, and everything we use is component
+like `input` , `button`, etc and we can add listeners to them like `onClick`, `onChange`, etc these listeners are nothing but props 
 
-In react components closly resemble to function and props as arguments therefore to we can set prop in component as function and pass our data from child to parent using that function that is declared in parent and change the variable present in parent NOTE that variable can be any thing.
+In React components closly resemble to function and props as arguments 
 
-In this project we send data from <`ExpensesForm>` to `<NewExpenses>` which then send to `<App>` where we update the array of object that contains our data.
+Therefore we can set prop in a component as function and pass our data from child to parent using that prop i.e. is function in parent component and change the variable present in parent Component NOTE that variable can be any thing.
+
+In this project we send data from <`ExpensesForm>` to `<NewExpenses>` which then send to `<App>` where we update the array of object that contains our expense data.
 
 In this project `<NewExpense>` and `<Expense>` are siblings i.e. they are on same lvl of tree where root is `<App>` and **IN REACT WE CAN NOT SENT DATA FROM SIBLING TO SIBLING** 
 
 In order to send data to sibling we send that to parent first and that data parent sends to child components that needs this thing is called **Lifting the State Up** 
 
 
+# Key Warnings
+When rendering a dynamic list always set the key value and it should be unique, this is done not case any error while rendering after updating the list via application.
