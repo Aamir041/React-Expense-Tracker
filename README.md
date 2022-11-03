@@ -7,11 +7,11 @@ Expense Tracker In React
 
 - After all the dependencies are installed type `npm start` then go to `http://localhost:3000/` in your browser
 
-<img src="./images/1.png">
+![img1](./images/1.png)
 
-<img src="./images/2.png">
+![img1](./images/2.png)
 
-<img src="./images/3.png">
+![img1](./images/3.png)
 
-<img src="./images/4.png">
+![img1](./images/4.png)
 
