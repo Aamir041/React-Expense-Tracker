@@ -1,35 +1,32 @@
 import "./Expenses.css"
-import ExpenseItem from "./ExpenseItem";
 import ExpenseFilter from "./ExpenseFilter"
 import Card from "../UI/Card";
 import { useState } from "react";
+import ExpensesList from "./ExpensesList";
 
 const Expense = (props) => {
-     const [filterYear, setFilterYear] = useState("2020")
+     const [filterYear, setFilterYear] = useState("2020");
 
      const applyFilterHandler = (appliedFilterYear) => {
           setFilterYear(appliedFilterYear);
+          console.log(filterYear)
      }
-     console.log(filterYear);
 
-     return(
+     const filteredExpenses = props.expenses.filter(expense => {
+          // ele is added in this array if its date matches with filter year
+          return expense.date.getFullYear().toString() === filterYear;
+        });
+
+     return (
           <Card className="expenses">
-               <ExpenseFilter 
-               selected = {filterYear}
-               applyFilterHandler={applyFilterHandler} 
+               <ExpenseFilter
+                    selected={filterYear}
+                    applyFilterHandler={applyFilterHandler}
                />
-                         {
-               props.expenses.map(
-                 (ele) => {
-                   return <ExpenseItem
-                        title = {ele.title}
-                        amount = {ele.amount}
-                        date = {ele.date}
-                        />
-                   // here ele is individual element in array of object named expenses and that object is passes ad prop in <ExpenseIten />
-                 }
-               )
-          }
+               { 
+               // ExpensesList returns contetn if filteredExpenses length is > 0 or show there is nothing in filtered array 
+               <ExpensesList filteredExpenses={filteredExpenses}/>
+               }
           </Card>
      )
 }

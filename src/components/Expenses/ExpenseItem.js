@@ -14,7 +14,7 @@ const ExpenseItem = (props) => {
       {/* all about date is in <PurchaseDate /> */}
       <PurchaseDate date={date} />
       <div className="expense-item__description">
-        <h2>{title}</h2>
+        <h2 className="expense-no_item_notice">{title}</h2>
       </div>
       <div className="expense-item__price">$ {amount}</div>
     </Card>
